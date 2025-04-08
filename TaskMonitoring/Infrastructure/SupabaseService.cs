@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using Supabase;
 
 namespace Infrastructure;
@@ -10,37 +11,37 @@ public class SupabaseService
     private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Settings.json");
 
     private Client _client;
+    private bool _initialized = false;
+
+    public Client Client => _client;
 
     public SupabaseService()
     {
         Load(_path);
-        InitializeAsync();
     }
 
-     private async Task InitializeAsync()
+    public async Task InitializeAsync()
     {
+        if (_initialized)
+            return;
+
         var options = new SupabaseOptions
         {
             AutoConnectRealtime = false
         };
 
-        _client = new Client(
-            _supabaseUrl,
-            _supabaseKey,
-            options);
-
+        _client = new Client(_supabaseUrl, _supabaseKey, options);
         await _client.InitializeAsync();
+
+        _initialized = true;
     }
+
 
     private void Load(string path)
     {
         var json = File.ReadAllText(path);
-        var config = JsonSerializer.Deserialize<SupabaseConfig>(json);
-
-        if (config == null)
-        {
-            throw new ApplicationException("Invalid configuration"); //ToDo
-        }
+        var config = JsonSerializer.Deserialize<SupabaseConfig>(json)
+                     ?? throw new ApplicationException("Invalid configuration");
 
         _supabaseUrl = config.SupabaseUrl;
         _supabaseKey = config.SupabaseKey;
@@ -49,6 +50,9 @@ public class SupabaseService
 
 internal class SupabaseConfig
 {
-    internal string SupabaseUrl { get; init; } = null!;
-    internal string SupabaseKey { get; init; } = null!;
+    [JsonPropertyName("supabaseUrl")]
+    public string SupabaseUrl { get; init; }
+    
+    [JsonPropertyName("supabaseKey")]
+    public string SupabaseKey { get; init; }
 }

@@ -1,23 +1,33 @@
-﻿using System.Text;
+﻿using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Infrastructure;
+using Infrastructure.Commands.TaskCommands;
 
-namespace TaskMonitoring;
-
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+namespace TaskMonitoring
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        private SupabaseService _service = new SupabaseService();
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private async void TestConnection_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await _service.InitializeAsync();
+                var taskCommands = new TaskCommands();
+
+                taskCommands.InsertTask();
+                MessageBox.Show("Supabase connection successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Connection failed:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

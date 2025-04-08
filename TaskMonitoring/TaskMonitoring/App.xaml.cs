@@ -10,3 +10,4 @@ namespace TaskMonitoring;
 public partial class App : Application
 {
 }
+
