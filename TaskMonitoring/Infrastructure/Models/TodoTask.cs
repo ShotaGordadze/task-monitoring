@@ -11,4 +11,9 @@ public class TodoTask : BaseModel
 
     [Column("description")]
     public string Description { get; set; } = "NONE";
+
+    public override string ToString()
+    {
+        return $"{Id} - Task: {Description}";
+    }
 }   

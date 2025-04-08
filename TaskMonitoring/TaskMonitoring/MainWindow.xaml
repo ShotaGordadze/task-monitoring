@@ -6,11 +6,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Test Supabase Connection"
-                Width="200"
-                Height="50"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Click="TestConnection_Click"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Test Supabase Connection"
+                    Width="200"
+                    Height="50"
+                    Click="TestConnection_Click"/>
+            <Button Content="Load Todos"
+                    Width="200"
+                    Height="50"
+                    Click="LoadTodos_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

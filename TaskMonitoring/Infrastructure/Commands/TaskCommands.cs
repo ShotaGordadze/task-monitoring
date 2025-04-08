@@ -5,12 +5,17 @@ namespace Infrastructure.Commands.TaskCommands;
 
 public class TaskCommands
 {
-    private static readonly SupabaseService _supabaseService = new();
-
+    private readonly SupabaseService _supabaseService;
+    
+    public TaskCommands()
+    {
+        _supabaseService = App.Services.GetRequiredService<SupabaseService>();
+        _client = App
+    }
+    
+    
     public async Task InsertTask()
     {
-        await _supabaseService.InitializeAsync();
-        
         var _client = _supabaseService.Client;
 
         var task = new TodoTask()
@@ -21,5 +26,16 @@ public class TaskCommands
         await _client
             .From<TodoTask>()
             .Insert(task);
+    }
+
+    public async Task<List<TodoTask>> LoadTasks()
+    {
+        var client = _supabaseService.Client;
+
+        var response = await client
+            .From<TodoTask>()
+            .Get();
+
+        return response.Models.ToList();
     }
 }

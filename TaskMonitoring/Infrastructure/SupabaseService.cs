@@ -11,8 +11,6 @@ public class SupabaseService
     private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Settings.json");
 
     private Client _client;
-    private bool _initialized = false;
-
     public Client Client => _client;
 
     public SupabaseService()
@@ -22,9 +20,6 @@ public class SupabaseService
 
     public async Task InitializeAsync()
     {
-        if (_initialized)
-            return;
-
         var options = new SupabaseOptions
         {
             AutoConnectRealtime = false
@@ -32,8 +27,6 @@ public class SupabaseService
 
         _client = new Client(_supabaseUrl, _supabaseKey, options);
         await _client.InitializeAsync();
-
-        _initialized = true;
     }
 
 
