@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMonitoring", "TaskMonitoring\TaskMonitoring.csproj", "{4DFF81F4-6AB4-44B6-AAFD-3E68E787CB76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{4E7EE3A7-47E3-4862-AE49-C7EF78DB64FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{4DFF81F4-6AB4-44B6-AAFD-3E68E787CB76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFF81F4-6AB4-44B6-AAFD-3E68E787CB76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFF81F4-6AB4-44B6-AAFD-3E68E787CB76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E7EE3A7-47E3-4862-AE49-C7EF78DB64FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E7EE3A7-47E3-4862-AE49-C7EF78DB64FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E7EE3A7-47E3-4862-AE49-C7EF78DB64FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E7EE3A7-47E3-4862-AE49-C7EF78DB64FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
