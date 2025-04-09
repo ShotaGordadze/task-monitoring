@@ -1,37 +1,42 @@
 using Infrastructure.Models;
+using Microsoft.Extensions.DependencyInjection;
 using Supabase;
 
 namespace Infrastructure.Commands.TaskCommands;
 
-public class TaskCommands
+public interface ITaskCommands
 {
-    private readonly SupabaseService _supabaseService;
-    
-    public TaskCommands()
-    {
-        _supabaseService = App.Services.GetRequiredService<SupabaseService>();
-        _client = App
-    }
-    
-    
-    public async Task InsertTask()
-    {
-        var _client = _supabaseService.Client;
+    public Task InsertTaskAsync();
+    public Task<List<TodoTask>> LoadTasksAsync();
+}
 
-        var task = new TodoTask()
+public class TaskCommands : ITaskCommands
+{
+    public async Task InsertTaskAsync()
+    {
+        var supabaseService = await SupabaseService.CreateAsync();
+        var client = supabaseService.Client;
+        
+        var task = new TodoTask
         {
-            Description = "TESTING TASK INSERT FUNC"
+            Initiator = "Shota",
+            Project = "Bugsy",
+            Content = "Create Supabase insert test",
+            StartDate = DateTime.UtcNow.Date,
+            EndDate = DateTime.UtcNow.Date.AddDays(3),
+            Status = "Pending",
+            Comment = "Auto-inserted test"
         };
-
-        await _client
+        await client
             .From<TodoTask>()
             .Insert(task);
     }
 
-    public async Task<List<TodoTask>> LoadTasks()
+    public async Task<List<TodoTask>> LoadTasksAsync()
     {
-        var client = _supabaseService.Client;
-
+        var supabaseService = await SupabaseService.CreateAsync();
+        var client = supabaseService.Client;
+        
         var response = await client
             .From<TodoTask>()
             .Get();
