@@ -15,7 +15,8 @@ namespace TaskMonitoring
             AppHost = new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddSingleton<MainWindow>();
+                    services.AddSingleton<UserWindow>();
+                    services.AddSingleton<LoginWindow>();
                     services.AddSingleton<ISupabaseService, SupabaseService>();
                     services.AddScoped<ITaskCommands, TaskCommands>();
                 })
@@ -28,8 +29,8 @@ namespace TaskMonitoring
             
             await AppHost!.StartAsync();
 
-            var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
-            mainWindow.Show();  
+            var loginWindow = AppHost.Services.GetRequiredService<LoginWindow>();
+            loginWindow.Show();  
         }
 
         protected override async void OnExit(ExitEventArgs e)

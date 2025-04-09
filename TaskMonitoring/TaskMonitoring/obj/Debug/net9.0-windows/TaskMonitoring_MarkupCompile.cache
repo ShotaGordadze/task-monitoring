@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\App.xaml
-11407045341
+31146308732
 
-4-1751126836
+6-453268013
 2451233121940
-MainWindow.xaml;
+InsertTaskWindow.xaml;LoginWindow.xaml;UserWindow.xaml;
 
 False
 

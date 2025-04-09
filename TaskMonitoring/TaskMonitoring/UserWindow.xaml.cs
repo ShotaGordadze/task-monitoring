@@ -8,13 +8,13 @@ using Infrastructure.Models;
 
 namespace TaskMonitoring
 {
-    public partial class MainWindow : Window
+    public partial class UserWindow : Window
     {
         private readonly ITaskCommands _taskCommands;
 
         public ObservableCollection<TodoTask> Tasks { get; set; } = new();
 
-        public MainWindow(ITaskCommands taskCommands)
+        public UserWindow(ITaskCommands taskCommands)
         {
             _taskCommands = taskCommands;
             InitializeComponent();
@@ -47,8 +47,8 @@ namespace TaskMonitoring
         {
             try
             {
-                await _taskCommands.InsertTaskAsync();
-                MessageBox.Show("Test insert successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                var insertTaskWindow = new InsertTaskWindow(_taskCommands);
+                insertTaskWindow.Show();
                 await LoadTasksAsync(); // Refresh the grid
             }
             catch (Exception ex)
@@ -99,7 +99,7 @@ namespace TaskMonitoring
             {
                 try
                 {
-                    // await _taskCommands.DeleteTaskAsync(task.Id);
+                     await _taskCommands.DeleteTaskAsync(task.Id);
                     Tasks.Remove(task); // Remove from the UI
                     MessageBox.Show("Task deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }

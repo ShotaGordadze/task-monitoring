@@ -72,8 +72,6 @@ C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Ta
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Infrastructure.dll
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Infrastructure.pdb
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring.csproj.AssemblyReference.cache
-C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\MainWindow.baml
-C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\MainWindow.g.cs
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\App.g.cs
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring_MarkupCompile.cache
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring.g.resources
@@ -121,3 +119,9 @@ C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Ta
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\System.Diagnostics.EventLog.dll
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\System.Text.Encodings.Web.dll
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\InsertTaskWindow.baml
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\InsertTaskWindow.g.cs
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\UserWindow.baml
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\UserWindow.g.cs
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.baml
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.g.cs

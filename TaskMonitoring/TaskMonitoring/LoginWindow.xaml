@@ -1,0 +1,131 @@
+<Window x:Class="TaskMonitoring.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login" Height="670" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+
+    <Window.Resources>
+        <!-- Flip Animations -->
+        <Storyboard x:Key="FlipToRegister">
+            <DoubleAnimation Storyboard.TargetName="FlipGrid"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                             From="1" To="0" Duration="0:0:0.2" AutoReverse="True"
+                             Completed="FlipToRegister_Completed" />
+        </Storyboard>
+
+        <Storyboard x:Key="FlipToLogin">
+            <DoubleAnimation Storyboard.TargetName="FlipGrid"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                             From="1" To="0" Duration="0:0:0.2" AutoReverse="True"
+                             Completed="FlipToLogin_Completed" />
+        </Storyboard>
+
+        <!-- Reusable Control Styles -->
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#B0B0B0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#B0B0B0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Background" Value="#4CAF50" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#4CAF50" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Margin" Value="0,5,0,3" />
+            <Setter Property="Foreground" Value="#444" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        
+        <Style TargetType="ComboBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#B0B0B0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#333" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid x:Name="FlipGrid">
+            <Grid.RenderTransform>
+                <ScaleTransform ScaleX="1" />
+            </Grid.RenderTransform>
+
+            <!-- Login Panel -->
+            <Grid x:Name="LoginPanel">
+                <StackPanel Margin="40">
+                    <TextBlock Text="შესვლა" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" />
+
+                    <TextBlock Text="მომხმარებელი:" />
+                    <TextBox x:Name="UsernameTextBox" />
+
+                    <TextBlock Text="პაროლი:" />
+                    <PasswordBox x:Name="PasswordBox" />
+
+                    <Button Content="შესვლა" Click="LoginButton_Click" />
+
+                    <TextBlock Text="რეგისტრაცია" Foreground="Blue" Cursor="Hand"
+                               MouseDown="RegisterText_MouseDown" Margin="0,20,0,0"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+
+            <!-- Register Panel -->
+            <Grid x:Name="RegisterPanel" Visibility="Collapsed">
+                <StackPanel Margin="40">
+                    <TextBlock Text="რეგისტრაცია" FontSize="22" FontWeight="Bold" Margin="0,0,0,20" />
+
+                    <TextBlock Text="სახელი:" />
+                    <TextBox x:Name="FirstNameTextBox" />
+
+                    <TextBlock Text="გვარი:" />
+                    <TextBox x:Name="LastNameTextBox" />
+
+                    <TextBlock Text="მომხმარებელი:" />
+                    <TextBox x:Name="RegisterUsernameTextBox" />
+
+                    <TextBlock Text="პაროლი:" />
+                    <PasswordBox x:Name="RegisterPasswordBox" />
+
+                    <TextBlock Text="როლი:" />
+                    <ComboBox x:Name="RoleComboBox">
+                        <ComboBoxItem Content="ადმინისტრატორი" />
+                        <ComboBoxItem Content="მენეჯერი" />
+                        <ComboBoxItem Content="თანამშრომელი" />
+                    </ComboBox>
+
+                    <Button Content="რეგისტრაცია" />
+                    <TextBlock Text="უკან გასვლა" Foreground="Blue" Cursor="Hand"
+                               MouseDown="BackToLoginText_MouseDown" Margin="0,20,0,0"
+                               HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
