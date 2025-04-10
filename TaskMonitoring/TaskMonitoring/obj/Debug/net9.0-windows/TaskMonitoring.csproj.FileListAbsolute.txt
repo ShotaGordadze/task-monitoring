@@ -125,3 +125,4 @@ C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Ta
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\UserWindow.g.cs
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.baml
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.g.cs
+C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\UserInfo.json

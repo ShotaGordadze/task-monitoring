@@ -19,6 +19,7 @@ namespace TaskMonitoring
                     services.AddSingleton<LoginWindow>();
                     services.AddSingleton<ISupabaseService, SupabaseService>();
                     services.AddScoped<ITaskCommands, TaskCommands>();
+                    services.AddScoped<IAuthCommands, AuthCommands>();
                 })
                 .Build();
         }

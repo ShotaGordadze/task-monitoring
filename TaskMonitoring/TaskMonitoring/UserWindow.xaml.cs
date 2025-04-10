@@ -1,25 +1,36 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using Infrastructure.Commands.TaskCommands;
 using Infrastructure.Models;
+using Newtonsoft.Json;
 
 namespace TaskMonitoring
 {
-    public partial class UserWindow : Window
+    public partial class UserWindow
     {
         private readonly ITaskCommands _taskCommands;
+        private readonly IAuthCommands _authCommands;
+        
+        private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "userInfo.json");
 
         public ObservableCollection<TodoTask> Tasks { get; set; } = new();
+        
+        public string DisplayName { get; set; } = "👤";
 
-        public UserWindow(ITaskCommands taskCommands)
+
+        public UserWindow()
         {
-            _taskCommands = taskCommands;
+            _taskCommands = new TaskCommands();
+            _authCommands = new AuthCommands();
             InitializeComponent();
-            DataContext = this; // Enable data binding to Tasks collection
+            DataContext = this;
             Loaded += MainWindow_Loaded;
+            LoadUserInfo();
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -31,6 +42,9 @@ namespace TaskMonitoring
         {
             try
             {
+                var json = File.ReadAllText(_path, new UTF8Encoding(encoderShouldEmitUTF8Identifier: true)); 
+                var currentUser = JsonConvert.DeserializeObject<UserInfo>(json);
+                
                 var loadedTasks = await _taskCommands.LoadTasksAsync();
 
                 Tasks.Clear();
@@ -39,7 +53,8 @@ namespace TaskMonitoring
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to load tasks:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Failed to load tasks:\n" + ex.Message, "Error", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 
@@ -53,7 +68,8 @@ namespace TaskMonitoring
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Test insert failed:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Test insert failed:\n" + ex.Message, "Error", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 
@@ -66,22 +82,28 @@ namespace TaskMonitoring
         private void ThreeDotButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var task = button?.DataContext as TodoTask; // Get the task for this row
 
-            if (task != null)
-            {
-                var contextMenu = new ContextMenu();
+            if (button?.DataContext is not TodoTask task) return;
+            var contextMenu = new ContextMenu();
 
-                var editMenuItem = new MenuItem { Header = "Edit" };
-                editMenuItem.Click += (s, args) => EditTask(task);
-                contextMenu.Items.Add(editMenuItem);
+            var editMenuItem = new MenuItem { Header = "Edit" };
+            editMenuItem.Click += (s, args) => EditTask(task);
+            contextMenu.Items.Add(editMenuItem);
 
-                var deleteMenuItem = new MenuItem { Header = "Delete" };
-                deleteMenuItem.Click += (s, args) => DeleteTask(task);
-                contextMenu.Items.Add(deleteMenuItem);
+            var deleteMenuItem = new MenuItem { Header = "Delete" };
+            deleteMenuItem.Click += (s, args) => DeleteTask(task);
+            contextMenu.Items.Add(deleteMenuItem);
 
-                contextMenu.IsOpen = true;
-            }
+            contextMenu.IsOpen = true;
+        }
+
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            await _authCommands.LogOut();
+            
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
         }
 
         private void EditTask(TodoTask task)
@@ -92,22 +114,48 @@ namespace TaskMonitoring
 
         private async void DeleteTask(TodoTask task)
         {
-            var result = MessageBox.Show($"Are you sure you want to delete task '{task.Content}'?", 
+            var result = MessageBox.Show($"Are you sure you want to delete task '{task.Content}'?",
                 "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {
                 try
                 {
-                     await _taskCommands.DeleteTaskAsync(task.Id);
-                    Tasks.Remove(task); // Remove from the UI
-                    MessageBox.Show("Task deleted successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    await _taskCommands.DeleteTaskAsync(task.Id);
+                    Tasks.Remove(task);
+                    MessageBox.Show("Task deleted successfully", "Success", MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error deleting task: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Error deleting task: {ex.Message}", "Error", MessageBoxButton.OK,
+                        MessageBoxImage.Error);
                 }
             }
         }
+        
+        private void LoadUserInfo()
+        {
+            var json = File.ReadAllText(_path, new UTF8Encoding(encoderShouldEmitUTF8Identifier: true)); 
+            var currentUser = JsonConvert.DeserializeObject<UserInfo>(json);
+           
+            FullNameText.Text = $"სახელი: {currentUser.FirtsName} {currentUser.LastName}";
+            RoleText.Text = $"როლი: {currentUser.Role}";
+            UsernameText.Text = $"მომხმარებელი: {currentUser.Username}";
+            DisplayName += $" {currentUser.FirtsName} {currentUser.LastName}";
+        }
+    }
+
+    internal class UserInfo
+    {
+        public int Id { get; set; }
+        
+        [JsonProperty(PropertyName = "name")]
+        public string FirtsName { get; set; }
+        
+        [JsonProperty(PropertyName = "last_name")]
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string Role { get; set; }
     }
 }

@@ -34,37 +34,62 @@
         </Style>
     </Window.Resources>
 
-    <DockPanel>
-        <!-- Toolbar Buttons -->
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="10">
-            <Button Content="Insert Task" Click="TestConnection_Click" Style="{StaticResource InsertTaskButtonStyle}" />
-            <Button Content="Reload Tasks" Click="ReloadButton_Click" Style="{StaticResource ReloadTasksButtonStyle}" />
+ <DockPanel>
+    <!-- ✅ TOP TOOLBAR WITH USER DROPDOWN -->
+    <Grid DockPanel.Dock="Top" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Side Buttons -->
+        <StackPanel Orientation="Horizontal">
+            <Button Content="დამატება" Click="TestConnection_Click" Style="{StaticResource InsertTaskButtonStyle}" />
+            <Button Content="განახლება" Click="ReloadButton_Click" Style="{StaticResource ReloadTasksButtonStyle}" />
         </StackPanel>
 
-        <!-- DataGrid with ContextMenu -->
-        <DataGrid ItemsSource="{Binding Tasks}" AutoGenerateColumns="False" Margin="10"
-                  IsReadOnly="True" AlternatingRowBackground="LightGray"
-                  SelectionMode="Single">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-                <DataGridTextColumn Header="Initiator" Binding="{Binding Initiator}" Width="100"/>
-                <DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="100"/>
-                <DataGridTextColumn Header="Content" Binding="{Binding Content}" Width="200"/>
-                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
-                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80"/>
-                <DataGridTextColumn Header="Comment" Binding="{Binding Comment}" Width="150"/>
-                
-                <!-- Custom Column for Three Dot Menu -->
-                <DataGridTemplateColumn Header="Actions" Width="50">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="..." HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                    Click="ThreeDotButton_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </DockPanel>
+        <!-- 👤 User Profile Dropdown -->
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <ToggleButton x:Name="UserToggleButton" Content="{Binding DisplayName}" 
+                          Padding="10,5" Background="#EEE" BorderBrush="#CCC"
+                          BorderThickness="1" Margin="10,0,0,0"/>
+            <Popup PlacementTarget="{Binding ElementName=UserToggleButton}" 
+                   Placement="Bottom" IsOpen="{Binding IsChecked, ElementName=UserToggleButton}" 
+                   StaysOpen="False">
+                <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Padding="10">
+                    <StackPanel>
+                        <TextBlock x:Name="FullNameText" FontWeight="Bold" />
+                        <TextBlock x:Name="UsernameText" />
+                        <TextBlock x:Name="RoleText" />
+                        <Button Content="გასვლა" Click="LogoutButton_Click" Background="Red" Foreground="White" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Popup>
+        </StackPanel>
+    </Grid>
+
+    <!-- ✅ Main DataGrid Section -->
+    <DataGrid ItemsSource="{Binding Tasks}" AutoGenerateColumns="False" Margin="10"
+              IsReadOnly="True" AlternatingRowBackground="LightGray"
+              SelectionMode="Single">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+            <DataGridTextColumn Header="Initiator" Binding="{Binding Initiator}" Width="100"/>
+            <DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="100"/>
+            <DataGridTextColumn Header="Content" Binding="{Binding Content}" Width="200"/>
+            <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
+            <DataGridTextColumn Header="End Date" Binding="{Binding EndDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
+            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80"/>
+            <DataGridTextColumn Header="Comment" Binding="{Binding Comment}" Width="150"/>
+            <DataGridTemplateColumn Header="Actions" Width="50">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Content="..." HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                Click="ThreeDotButton_Click"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</DockPanel>
 </Window>

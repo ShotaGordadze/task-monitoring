@@ -1,25 +1,32 @@
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Infrastructure;
+using Infrastructure.Commands.TaskCommands;
+using Infrastructure.Models;
 
 namespace TaskMonitoring;
 
 public partial class LoginWindow : Window
 {
+    private readonly IAuthCommands _authCommands;
+
     public LoginWindow()
     {
+        _authCommands = new AuthCommands();
         InitializeComponent();
     }
-    
+
     private void RegisterText_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        Storyboard sb = (Storyboard)this.Resources["FlipToRegister"];
+        var sb = (Storyboard)Resources["FlipToRegister"];
         sb.Begin();
     }
 
     private void BackToLoginText_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        Storyboard sb = (Storyboard)this.Resources["FlipToLogin"];
+        var sb = (Storyboard)Resources["FlipToLogin"];
         sb.Begin();
     }
 
@@ -35,8 +42,84 @@ public partial class LoginWindow : Window
         LoginPanel.Visibility = Visibility.Visible;
     }
 
-    private void LoginButton_Click(object sender, RoutedEventArgs e)
+    private async void LoginButton_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Login clicked!");
+        var username = UsernameTextBox.Text.Trim();
+        var password = PasswordBox.Password.Trim();
+
+        try
+        {
+            await _authCommands.LogIn(username, password); 
+                    
+            var userWindow = new UserWindow();
+            Application.Current.MainWindow = userWindow;
+            userWindow.Show();
+
+            Close();
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message, "შეცდომა", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+    }
+
+    private async void RegisterButton_Click(object sender, RoutedEventArgs e)
+    {
+        var firstName = FirstNameTextBox.Text.Trim();
+        var lastName = LastNameTextBox.Text.Trim();
+        var username = RegisterUsernameTextBox.Text.Trim();
+        var password = RegisterPasswordBox.Password.Trim();
+        var tempRole = (RoleComboBox.SelectedItem as ComboBoxItem)?.Content!;
+
+        var role = tempRole switch
+        {
+            "მოდერატორი" => new Role
+            {
+                Id = 1,
+                RoleName = Roles.Moderator
+            },
+
+            "თანამშრომელი" => new Role
+            {
+                Id = 2,
+                RoleName = Roles.User
+            },
+
+            _ => throw new Exception("არასწორი როლია არჩეული.")
+        };
+
+        if (string.IsNullOrEmpty(firstName) ||
+            string.IsNullOrEmpty(lastName) ||
+            string.IsNullOrEmpty(username) ||
+            string.IsNullOrEmpty(password))
+        {
+            MessageBox.Show("გთხოვთ შეავსოთ ყველა ველი.", "შეცდომა", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+
+        password = _authCommands.EncryptPassword(password);
+
+        var user = new User()
+        {
+            Name = firstName,
+            LastName = lastName,
+            UserName = username,
+            Password = password,
+            RoleId = role.Id
+        };
+        try
+        {
+            await _authCommands.SignIn(user);
+            
+            var userWindow = new UserWindow();
+            Application.Current.MainWindow = userWindow;
+            userWindow.Show();
+
+            Close();
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message, "შეცდომა", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }

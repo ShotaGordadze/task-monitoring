@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Login" Height="670" Width="400"
         WindowStartupLocation="CenterScreen"
-        Background="#F5F5F5">
+        Background="White">
 
     <Window.Resources>
         <!-- Flip Animations -->
@@ -115,12 +115,11 @@
 
                     <TextBlock Text="როლი:" />
                     <ComboBox x:Name="RoleComboBox">
-                        <ComboBoxItem Content="ადმინისტრატორი" />
-                        <ComboBoxItem Content="მენეჯერი" />
+                        <ComboBoxItem Content="მოდერატორი" />
                         <ComboBoxItem Content="თანამშრომელი" />
                     </ComboBox>
 
-                    <Button Content="რეგისტრაცია" />
+                    <Button Content="რეგისტრაცია" Click="RegisterButton_Click"/>
                     <TextBlock Text="უკან გასვლა" Foreground="Blue" Cursor="Hand"
                                MouseDown="BackToLoginText_MouseDown" Margin="0,20,0,0"
                                HorizontalAlignment="Center" />

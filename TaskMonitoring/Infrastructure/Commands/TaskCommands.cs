@@ -8,6 +8,7 @@ public interface ITaskCommands
 {
     public Task InsertTaskAsync(TodoTask task);
     public Task<List<TodoTask>> LoadTasksAsync();
+    public Task<List<TodoTask>> LoadTasksAsync(int id);
     public Task DeleteTaskAsync(int id);
 }
 
@@ -33,6 +34,21 @@ public class TaskCommands : ITaskCommands
             .Get();
 
         return response.Models.ToList();
+    }
+
+    public async Task<List<TodoTask>> LoadTasksAsync(int id)
+    {
+        var supabaseService = await SupabaseService.CreateAsync();
+        var client = supabaseService.Client;
+
+        var response = await client
+            .From<TodoTask>()
+            .Where(x => x.Id == id)
+            .Get();
+        
+        //ToDo
+
+        return response.Models.ToList();;
     }
 
     public async Task DeleteTaskAsync(int id)
