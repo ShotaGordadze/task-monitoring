@@ -3,6 +3,7 @@
   "name": "",
   "last_name": "",
   "username": "",
+  "password": "",
   "role": "",
   "is_logged_in": "0"
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\
 TaskMonitoring
 none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP
-C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\App.xaml
-31146308732
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\App.xaml
+5-181142843
 
-6-453268013
-2451233121940
-InsertTaskWindow.xaml;LoginWindow.xaml;UserWindow.xaml;
+8-258383138
+245-1633117458
+EditTaskWindow.xaml;InsertTaskWindow.xaml;LoginWindow.xaml;ModeratorWindow.xaml;UserWindow.xaml;
 
-False
+True
 

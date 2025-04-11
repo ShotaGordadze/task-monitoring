@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 
@@ -24,4 +25,7 @@ public class User : BaseModel
     
     [Column("role_id")]
     public int RoleId { get; set; }
+
+    [Reference(typeof(TodoTask), useInnerJoin: false)]
+    public List<TodoTask> Tasks { get; set; } = [];
 }

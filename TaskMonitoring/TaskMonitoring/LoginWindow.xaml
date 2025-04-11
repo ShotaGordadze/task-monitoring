@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Login" Height="670" Width="400"
         WindowStartupLocation="CenterScreen"
-        Background="White">
+        Icon="../assets/Icon.ico"
+        Background="#00a4a0">
 
     <Window.Resources>
         <!-- Flip Animations -->

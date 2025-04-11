@@ -7,11 +7,13 @@ namespace Infrastructure.Commands.TaskCommands;
 
 public interface IAuthCommands
 {
-    public Task LogIn(string username, string password);
+    public Task<User> LogIn(string username, string userPassword);
 
     public Task LogOut();
 
-    public Task SignIn(User user);
+    public Task<User> SignIn(User user);
+
+    public Task<User> GetUserAsync(int id);
 
     public string EncryptPassword(string password);
 }
@@ -20,15 +22,15 @@ public class AuthCommands : IAuthCommands
 {
     private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "userInfo.json");
 
-    public async Task LogIn(string username, string password)
+    public async Task<User> LogIn(string username, string userPassword)
     {
         var supabaseService = await SupabaseService.CreateAsync();
         var client = supabaseService.Client;
 
-        password = EncryptPassword(password);
+        userPassword = EncryptPassword(userPassword);
 
         var response = await client.From<User>()
-            .Where(x => x.UserName == username && x.Password == password)
+            .Where(x => x.UserName == username && x.Password == userPassword)
             .Get();
 
         if (response.Model != null)
@@ -46,6 +48,7 @@ public class AuthCommands : IAuthCommands
                 name = response.Model.Name,
                 last_name = response.Model.LastName,
                 username = response.Model.UserName,
+                password = userPassword,
                 role = userRole,
                 is_logged_in = "1"
             };
@@ -53,11 +56,11 @@ public class AuthCommands : IAuthCommands
             var json = JsonSerializer.Serialize(jsonData, new JsonSerializerOptions { WriteIndented = true });
 
             await File.WriteAllTextAsync(_path, json);
+            
+            return response.Model;
         }
-        else
-        {
-            throw new Exception("მომხმარებელი ან პაროლი არასწორია!");
-        }
+
+        throw new Exception("მომხმარებელი ან პაროლი არასწორია!");
     }
 
     public async Task LogOut()
@@ -67,6 +70,7 @@ public class AuthCommands : IAuthCommands
             name = string.Empty,
             last_name = string.Empty,
             username = string.Empty,
+            password = string.Empty,
             role = string.Empty,
             is_logged_in = "0"
         };
@@ -74,15 +78,14 @@ public class AuthCommands : IAuthCommands
         var json = JsonSerializer.Serialize(jsonData, new JsonSerializerOptions { WriteIndented = true });
 
         await File.WriteAllTextAsync(_path, json);
-        //ToDo
     }
 
-    public async Task SignIn(User user)
+    public async Task<User> SignIn(User user)
     {
         var supabaseService = await SupabaseService.CreateAsync();
         var client = supabaseService.Client;
 
-        var response = await client.From<User>()
+        var response  = await client.From<User>()
             .Where(x => x.UserName == user.UserName)
             .Get();
 
@@ -107,6 +110,7 @@ public class AuthCommands : IAuthCommands
             name = user.Name,
             last_name = user.LastName,
             username = user.UserName,
+            password = user.Password,
             role = userRole,
             is_logged_in = "1"
         };
@@ -114,6 +118,33 @@ public class AuthCommands : IAuthCommands
         var json = JsonSerializer.Serialize(jsonData, new JsonSerializerOptions { WriteIndented = true });
 
         await File.WriteAllTextAsync(_path, json);
+
+        return insertedUser.Model;
+    }
+
+    public async Task<User> GetUserAsync(int id)
+    {
+        var supabaseService = await SupabaseService.CreateAsync();
+        var client = supabaseService.Client;
+
+        var response = await client.From<User>()
+            .Where(x => x.Id == id)
+            .Get();
+
+        return response.Model ??
+               throw new Exception($"მომხმარებელი Id-ით: {id} არ არსებობს");
+    } 
+    public async Task<User> GetUserByUsernameAsync(string username)
+    {
+        var supabaseService = await SupabaseService.CreateAsync();
+        var client = supabaseService.Client;
+
+        var response = await client.From<User>()
+            .Where(x => x.UserName == username)
+            .Get();
+
+        return response.Model ??
+               throw new Exception($"მომხმარებელი {username} არ არსებობს");
     }
 
     public string EncryptPassword(string password)

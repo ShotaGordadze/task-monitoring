@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj": {}
+    "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj": {}
   },
   "projects": {
-    "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\highm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\Infrastructure\\obj\\",
+        "projectPath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\ShotaGordadze\\.nuget\\packages\\",
+        "outputPath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\highm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ShotaGordadze\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -73,45 +68,58 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[9.0.4, 9.0.4]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[9.0.4, 9.0.4]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[9.0.4, 9.0.4]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\highm\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.105/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     },
-    "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj": {
+    "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj",
+        "projectUniqueName": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj",
         "projectName": "TaskMonitoring",
-        "projectPath": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj",
-        "packagesPath": "C:\\Users\\highm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\obj\\",
+        "projectPath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj",
+        "packagesPath": "C:\\Users\\ShotaGordadze\\.nuget\\packages\\",
+        "outputPath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\highm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\ShotaGordadze\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0-windows7.0": {
             "targetAlias": "net9.0-windows",
             "projectReferences": {
-              "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\highm\\OneDrive\\Desktop\\me core\\C#\\GIT\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj"
+              "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -125,7 +133,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0-windows7.0": {
@@ -151,6 +160,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[9.0.4, 9.0.4]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[9.0.4, 9.0.4]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[9.0.4, 9.0.4]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -159,7 +182,12 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\highm\\.dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.105/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

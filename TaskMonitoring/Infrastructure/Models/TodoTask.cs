@@ -8,6 +8,9 @@ public class TodoTask : BaseModel
 {
     [PrimaryKey("id", false)]
     public int Id { get; set; }
+    
+    [Column("user_id")]
+    public int UserId { get; set; }
 
     [Column("initiator")]
     public string Initiator { get; set; } = "NONE";

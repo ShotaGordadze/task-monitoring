@@ -42,20 +42,34 @@ public partial class LoginWindow : Window
         LoginPanel.Visibility = Visibility.Visible;
     }
 
-    private async void LoginButton_Click(object sender, RoutedEventArgs e)
+    public async void LoginButton_Click(object sender, RoutedEventArgs e)
     {
         var username = UsernameTextBox.Text.Trim();
         var password = PasswordBox.Password.Trim();
 
         try
         {
-            await _authCommands.LogIn(username, password); 
-                    
-            var userWindow = new UserWindow();
-            Application.Current.MainWindow = userWindow;
-            userWindow.Show();
+           var user = await _authCommands.LogIn(username, password);
 
-            Close();
+           switch (user.RoleId)
+           {
+               case 1: //Moderator
+               {
+                   var moderatorWindow = new ModeratorWindow();
+                   Application.Current.MainWindow = moderatorWindow;
+                   moderatorWindow.Show();
+                   break;
+               }
+               case 2: //User
+               {
+                   var userWindow = new UserWindow();
+                   Application.Current.MainWindow = userWindow;
+                   userWindow.Show();
+                   break;
+               }
+           }
+
+           Close();
         }
         catch (Exception exception)
         {
@@ -109,11 +123,25 @@ public partial class LoginWindow : Window
         };
         try
         {
-            await _authCommands.SignIn(user);
-            
-            var userWindow = new UserWindow();
-            Application.Current.MainWindow = userWindow;
-            userWindow.Show();
+            var insertedUser = await _authCommands.SignIn(user);
+
+            switch (insertedUser.RoleId)
+            {
+                case 1: //Moderator
+                {
+                    var moderatorWindow = new ModeratorWindow();
+                    Application.Current.MainWindow = moderatorWindow;
+                    moderatorWindow.Show();
+                    break;
+                }
+                case 2: //User
+                {
+                    var userWindow = new UserWindow();
+                    Application.Current.MainWindow = userWindow;
+                    userWindow.Show();
+                    break;
+                }
+            }
 
             Close();
         }

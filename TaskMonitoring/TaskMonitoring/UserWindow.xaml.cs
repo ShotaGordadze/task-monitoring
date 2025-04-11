@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,11 +13,11 @@ namespace TaskMonitoring
     {
         private readonly ITaskCommands _taskCommands;
         private readonly IAuthCommands _authCommands;
-        
+
         private readonly string _path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "userInfo.json");
 
         public ObservableCollection<TodoTask> Tasks { get; set; } = new();
-        
+
         public string DisplayName { get; set; } = "👤";
 
 
@@ -35,17 +33,18 @@ namespace TaskMonitoring
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            await LoadTasksAsync();
+            await LoadUserTasksAsync();
         }
 
-        private async Task LoadTasksAsync()
+        private async Task LoadUserTasksAsync()
         {
             try
             {
-                var json = File.ReadAllText(_path, new UTF8Encoding(encoderShouldEmitUTF8Identifier: true)); 
-                var currentUser = JsonConvert.DeserializeObject<UserInfo>(json);
-                
-                var loadedTasks = await _taskCommands.LoadTasksAsync();
+                var json = File.ReadAllText(_path, new UTF8Encoding(encoderShouldEmitUTF8Identifier: true));
+                var currentUser = JsonConvert.DeserializeObject<UserInfo>(json) ??
+                                  throw new Exception("მომხმარებელი არ არსებობს");
+
+                var loadedTasks = await _taskCommands.LoadTasksAsync(currentUser.Id);
 
                 Tasks.Clear();
                 foreach (var task in loadedTasks)
@@ -58,13 +57,13 @@ namespace TaskMonitoring
             }
         }
 
-        private async void TestConnection_Click(object sender, RoutedEventArgs e)
+        private async void InsertTask_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var insertTaskWindow = new InsertTaskWindow(_taskCommands);
+                var insertTaskWindow = new InsertTaskWindow(_taskCommands, _authCommands);
                 insertTaskWindow.Show();
-                await LoadTasksAsync(); // Refresh the grid
+                await LoadUserTasksAsync(); 
             }
             catch (Exception ex)
             {
@@ -75,7 +74,7 @@ namespace TaskMonitoring
 
         private async void ReloadButton_Click(object sender, RoutedEventArgs e)
         {
-            await LoadTasksAsync();
+            await LoadUserTasksAsync();
         }
 
         // Click handler for the three dots button to open context menu
@@ -86,11 +85,11 @@ namespace TaskMonitoring
             if (button?.DataContext is not TodoTask task) return;
             var contextMenu = new ContextMenu();
 
-            var editMenuItem = new MenuItem { Header = "Edit" };
+            var editMenuItem = new MenuItem { Header = "რედაქტირება" };
             editMenuItem.Click += (s, args) => EditTask(task);
             contextMenu.Items.Add(editMenuItem);
 
-            var deleteMenuItem = new MenuItem { Header = "Delete" };
+            var deleteMenuItem = new MenuItem { Header = "წაშლა" };
             deleteMenuItem.Click += (s, args) => DeleteTask(task);
             contextMenu.Items.Add(deleteMenuItem);
 
@@ -100,7 +99,7 @@ namespace TaskMonitoring
         private async void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             await _authCommands.LogOut();
-            
+
             var loginWindow = new LoginWindow();
             loginWindow.Show();
             Close();
@@ -108,8 +107,8 @@ namespace TaskMonitoring
 
         private void EditTask(TodoTask task)
         {
-            MessageBox.Show($"Edit Task: {task.Id} - {task.Content}");
-            // Implement Edit logic here (open an edit dialog, etc.)
+            var editWindow = new EditTaskWindow(task);
+            editWindow.Show();
         }
 
         private async void DeleteTask(TodoTask task)
@@ -123,8 +122,6 @@ namespace TaskMonitoring
                 {
                     await _taskCommands.DeleteTaskAsync(task.Id);
                     Tasks.Remove(task);
-                    MessageBox.Show("Task deleted successfully", "Success", MessageBoxButton.OK,
-                        MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
@@ -133,12 +130,12 @@ namespace TaskMonitoring
                 }
             }
         }
-        
+
         private void LoadUserInfo()
         {
-            var json = File.ReadAllText(_path, new UTF8Encoding(encoderShouldEmitUTF8Identifier: true)); 
+            var json = File.ReadAllText(_path, new UTF8Encoding(encoderShouldEmitUTF8Identifier: true));
             var currentUser = JsonConvert.DeserializeObject<UserInfo>(json);
-           
+
             FullNameText.Text = $"სახელი: {currentUser.FirtsName} {currentUser.LastName}";
             RoleText.Text = $"როლი: {currentUser.Role}";
             UsernameText.Text = $"მომხმარებელი: {currentUser.Username}";
@@ -149,13 +146,17 @@ namespace TaskMonitoring
     internal class UserInfo
     {
         public int Id { get; set; }
-        
-        [JsonProperty(PropertyName = "name")]
-        public string FirtsName { get; set; }
-        
+
+        [JsonProperty(PropertyName = "name")] public string FirtsName { get; set; }
+
         [JsonProperty(PropertyName = "last_name")]
         public string LastName { get; set; }
+
         public string Username { get; set; }
+        public string Password { get; set; }
         public string Role { get; set; }
+        
+        [JsonProperty(PropertyName = "is_logged_in")] 
+        public string IsLoggedIn { get; set; }
     }
 }

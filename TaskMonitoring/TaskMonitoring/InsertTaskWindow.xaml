@@ -1,8 +1,9 @@
 <Window x:Class="TaskMonitoring.InsertTaskWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Insert Task" Height="640" Width="400"
-        Background="#F5F5F5" BorderBrush="#B0B0B0" BorderThickness="1">
+        Title="Task Monitoring" Height="640" Width="400"
+        Icon="../assets/Icon.ico"
+        Background="#00a4a0" BorderBrush="#B0B0B0" BorderThickness="1">
     <Window.Resources>
         <!-- Style for TextBlock -->
         <Style TargetType="TextBlock">

@@ -1,7 +1,9 @@
 ﻿<Window x:Class="TaskMonitoring.UserWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Task Monitoring" Height="500" Width="900">
+        Title="Task Monitoring" Height="500" Width="1130"
+        Icon="../assets/Icon.ico"
+        Background="#00a4a0">
     <Window.Resources>
         <!-- Style for 'Insert Task' Button -->
         <Style x:Key="InsertTaskButtonStyle" TargetType="Button">
@@ -32,64 +34,81 @@
             <Setter Property="Height" Value="40"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
+
+        <!-- 📐 Centered Cell Style -->
+        <Style x:Key="CenteredCellTextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <!-- 🧷 Center Header Text -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
     </Window.Resources>
 
- <DockPanel>
-    <!-- ✅ TOP TOOLBAR WITH USER DROPDOWN -->
-    <Grid DockPanel.Dock="Top" Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+    <DockPanel>
+        <!-- ✅ TOP TOOLBAR WITH USER DROPDOWN -->
+        <Grid DockPanel.Dock="Top" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-        <!-- Left Side Buttons -->
-        <StackPanel Orientation="Horizontal">
-            <Button Content="დამატება" Click="TestConnection_Click" Style="{StaticResource InsertTaskButtonStyle}" />
-            <Button Content="განახლება" Click="ReloadButton_Click" Style="{StaticResource ReloadTasksButtonStyle}" />
-        </StackPanel>
+            <!-- Left Side Buttons -->
+            <StackPanel Orientation="Horizontal">
+                <Button Content="დამატება" Click="InsertTask_Click" Style="{StaticResource InsertTaskButtonStyle}" />
+                <Button Content="განახლება" Click="ReloadButton_Click" Style="{StaticResource ReloadTasksButtonStyle}" />
+            </StackPanel>
 
-        <!-- 👤 User Profile Dropdown -->
-        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <ToggleButton x:Name="UserToggleButton" Content="{Binding DisplayName}" 
-                          Padding="10,5" Background="#EEE" BorderBrush="#CCC"
-                          BorderThickness="1" Margin="10,0,0,0"/>
-            <Popup PlacementTarget="{Binding ElementName=UserToggleButton}" 
-                   Placement="Bottom" IsOpen="{Binding IsChecked, ElementName=UserToggleButton}" 
-                   StaysOpen="False">
-                <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Padding="10">
-                    <StackPanel>
-                        <TextBlock x:Name="FullNameText" FontWeight="Bold" />
-                        <TextBlock x:Name="UsernameText" />
-                        <TextBlock x:Name="RoleText" />
-                        <Button Content="გასვლა" Click="LogoutButton_Click" Background="Red" Foreground="White" Margin="0,10,0,0"/>
-                    </StackPanel>
-                </Border>
-            </Popup>
-        </StackPanel>
-    </Grid>
+            <!-- 👤 User Profile Dropdown -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <ToggleButton x:Name="UserToggleButton" Content="{Binding DisplayName}" 
+                              Padding="10,5" Background="#EEE" BorderBrush="#CCC"
+                              BorderThickness="1" Margin="10,0,0,0"/>
+                <Popup PlacementTarget="{Binding ElementName=UserToggleButton}" 
+                       Placement="Bottom" IsOpen="{Binding IsChecked, ElementName=UserToggleButton}" 
+                       StaysOpen="False">
+                    <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="4" Padding="10">
+                        <StackPanel>
+                            <TextBlock x:Name="FullNameText" FontWeight="Bold" />
+                            <TextBlock x:Name="UsernameText" />
+                            <TextBlock x:Name="RoleText" />
+                            <Button Content="გასვლა" Click="LogoutButton_Click" Background="Red" Foreground="White" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </Popup>
+            </StackPanel>
+        </Grid>
 
-    <!-- ✅ Main DataGrid Section -->
-    <DataGrid ItemsSource="{Binding Tasks}" AutoGenerateColumns="False" Margin="10"
-              IsReadOnly="True" AlternatingRowBackground="LightGray"
-              SelectionMode="Single">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
-            <DataGridTextColumn Header="Initiator" Binding="{Binding Initiator}" Width="100"/>
-            <DataGridTextColumn Header="Project" Binding="{Binding Project}" Width="100"/>
-            <DataGridTextColumn Header="Content" Binding="{Binding Content}" Width="200"/>
-            <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
-            <DataGridTextColumn Header="End Date" Binding="{Binding EndDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
-            <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80"/>
-            <DataGridTextColumn Header="Comment" Binding="{Binding Comment}" Width="150"/>
-            <DataGridTemplateColumn Header="Actions" Width="50">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button Content="..." HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                Click="ThreeDotButton_Click"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-        </DataGrid.Columns>
-    </DataGrid>
-</DockPanel>
+        <!-- ✅ Main DataGrid Section -->
+        <DataGrid ItemsSource="{Binding Tasks}" AutoGenerateColumns="False" Margin="10"
+                  IsReadOnly="True" AlternatingRowBackground="LightGray"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ინიციატორი" Binding="{Binding Initiator}" Width="100" ElementStyle="{StaticResource CenteredCellTextStyle}"/>
+                <DataGridTextColumn Header="პროექტი" Binding="{Binding Project}" Width="100" ElementStyle="{StaticResource CenteredCellTextStyle}"/>
+                <DataGridTextColumn Header="შინაარსი" Binding="{Binding Content}" Width="200"/>
+                <DataGridTextColumn Header="დაწყება" Binding="{Binding StartDate, StringFormat={}{0:yyyy-MM-dd}}" Width="100" ElementStyle="{StaticResource CenteredCellTextStyle}"/>
+                <DataGridTextColumn Header="დამთავრება" Binding="{Binding EndDate, StringFormat={}{0:yyyy-MM-dd}}" Width="150" ElementStyle="{StaticResource CenteredCellTextStyle}"/>
+                <DataGridTextColumn Header="სტატუსი" Binding="{Binding Status}" Width="Auto" ElementStyle="{StaticResource CenteredCellTextStyle}"/>
+                <DataGridTextColumn Header="კომენტარი" Binding="{Binding Comment}" Width="250"/>
+                <DataGridTemplateColumn Header="⚙️" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                <Button Content="..." Width="25" Height="25"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Click="ThreeDotButton_Click"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </Window>

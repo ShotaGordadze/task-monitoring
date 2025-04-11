@@ -17,4 +17,9 @@
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0-preview.2.25163.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="assets\Icon.ico" />
+      <Resource Include="assets\Icon.ico" />
+    </ItemGroup>
+
 </Project>

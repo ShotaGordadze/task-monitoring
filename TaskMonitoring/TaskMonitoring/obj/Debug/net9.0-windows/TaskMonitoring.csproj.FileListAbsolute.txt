@@ -25,8 +25,6 @@ D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\ne
 D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Infrastructure.dll
 D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Infrastructure.pdb
 D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring.csproj.AssemblyReference.cache
-D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\MainWindow.baml
-D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\MainWindow.g.cs
 D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\App.g.cs
 D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring_MarkupCompile.cache
 D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring.g.resources
@@ -126,3 +124,48 @@ C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Ta
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.baml
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.g.cs
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\UserInfo.json
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\UserInfo.json
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.Binder.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Diagnostics.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Hosting.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.Configuration.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.Console.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.Debug.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.EventLog.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Logging.EventSource.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Options.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\Microsoft.Extensions.Primitives.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\System.Diagnostics.DiagnosticSource.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\System.Diagnostics.EventLog.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\System.IO.Pipelines.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\System.Text.Encodings.Web.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\System.Text.Json.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\System.Diagnostics.EventLog.Messages.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\System.Diagnostics.EventLog.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\System.Text.Encodings.Web.dll
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\InsertTaskWindow.baml
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.baml
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\UserWindow.baml
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\InsertTaskWindow.g.cs
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\LoginWindow.g.cs
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\UserWindow.g.cs
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\ModeratorWindow.g.cs
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\TaskMonitoring_MarkupCompile.lref
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\ModeratorWindow.baml
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\EditTaskWindow.baml
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\TaskMonitoring\obj\Debug\net9.0-windows\EditTaskWindow.g.cs

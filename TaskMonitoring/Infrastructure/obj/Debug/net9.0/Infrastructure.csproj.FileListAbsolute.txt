@@ -27,3 +27,4 @@ C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\In
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Infrastructure\bin\Debug\net9.0\Infrastructure.pdb
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
 C:\Users\highm\OneDrive\Desktop\me core\C#\GIT\task-monitoring\TaskMonitoring\Infrastructure\bin\Debug\net9.0\UserInfo.json
+D:\ShotasProjects\Git\task-monitoring\TaskMonitoring\Infrastructure\bin\Debug\net9.0\UserInfo.json
