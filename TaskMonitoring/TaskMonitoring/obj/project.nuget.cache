@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E8pgQEWuWsc=",
+  "dgSpecHash": "QP9WFoRPD3U=",
   "success": true,
   "projectFilePath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\TaskMonitoring\\TaskMonitoring.csproj",
   "expectedPackageFiles": [
@@ -60,10 +60,7 @@
     "C:\\Users\\ShotaGordadze\\.nuget\\packages\\system.text.encodings.web\\10.0.0-preview.2.25163.2\\system.text.encodings.web.10.0.0-preview.2.25163.2.nupkg.sha512",
     "C:\\Users\\ShotaGordadze\\.nuget\\packages\\system.text.json\\10.0.0-preview.2.25163.2\\system.text.json.10.0.0-preview.2.25163.2.nupkg.sha512",
     "C:\\Users\\ShotaGordadze\\.nuget\\packages\\system.threading.channels\\8.0.0\\system.threading.channels.8.0.0.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\websocket.client\\5.1.1\\websocket.client.5.1.1.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.4\\microsoft.netcore.app.runtime.win-x64.9.0.4.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.4.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.4\\microsoft.aspnetcore.app.runtime.win-x64.9.0.4.nupkg.sha512"
+    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\websocket.client\\5.1.1\\websocket.client.5.1.1.nupkg.sha512"
   ],
   "logs": []
 }

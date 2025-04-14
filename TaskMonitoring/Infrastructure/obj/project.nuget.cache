@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YyzXof0icSg=",
+  "dgSpecHash": "PiWGO105Jjg=",
   "success": true,
   "projectFilePath": "D:\\ShotasProjects\\Git\\task-monitoring\\TaskMonitoring\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -31,10 +31,7 @@
     "C:\\Users\\ShotaGordadze\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.5.1\\system.identitymodel.tokens.jwt.7.5.1.nupkg.sha512",
     "C:\\Users\\ShotaGordadze\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
     "C:\\Users\\ShotaGordadze\\.nuget\\packages\\system.threading.channels\\8.0.0\\system.threading.channels.8.0.0.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\websocket.client\\5.1.1\\websocket.client.5.1.1.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.4\\microsoft.netcore.app.runtime.win-x64.9.0.4.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.4.nupkg.sha512",
-    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.4\\microsoft.aspnetcore.app.runtime.win-x64.9.0.4.nupkg.sha512"
+    "C:\\Users\\ShotaGordadze\\.nuget\\packages\\websocket.client\\5.1.1\\websocket.client.5.1.1.nupkg.sha512"
   ],
   "logs": []
 }
